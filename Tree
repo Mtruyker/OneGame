@@ -11,7 +11,8 @@ public class Tree : MonoBehaviour{
      private Color _clearColor = new Color(1, 1, 1, 1);
      private bool _isClear;
      private float Health = 100;
-
+     public GameObject TreeDroppedElement;
+ 
 
      void Start(){
         _renderer = GetComponent<SprintRenderer>();
@@ -28,8 +29,21 @@ public class Tree : MonoBehaviour{
     }
 
     public void OnClick(){
-        Debug.Log("Click")
-    }
+        Health -=25;
+        if (Health <= 0)
+        {
+            int count = Random.Range(3,5);
+            var p = transform.position;
+
+
+            for (int i = 0; i < count; i++)
+            {
+                Instatiatate(TreeDroppedElement, new vector3(p.x, p.y + i, p.z), Quqternion.idetity);
+            }
+            
+            Destrot(gameObject);
+        }
+        }
     public void OnEnter();{
         _currentAddedColor = AddColorWithEnter;
         _isClear = false;
