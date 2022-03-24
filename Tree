@@ -1,0 +1,23 @@
+using System.Collectons;
+using System.Collectons.Generic;
+using UnityEngine;
+
+public class Tree : MonoBehaviour{
+     
+
+     void Start()
+    {
+        Debug.Log("Click")
+
+    }
+
+    public void OnClick()
+    {
+        Debug.Log("Enter")
+    }
+
+    public void OneExit()
+    {
+        Debug.Log("Exit")
+    }
+}
