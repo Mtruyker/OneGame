@@ -5,19 +5,38 @@ using UnityEngine;
 public class Tree : MonoBehaviour{
      
 
-     void Start()
-    {
+     private SprintRenderer _renderer;
+     public Color  AddColorWithEnter;
+     private Color _currentAddedColor;
+     private Color _clearColor = new Color(1, 1, 1, 1);
+     private bool _isClear;
+     private float Health = 100;
+
+
+     void Start(){
+        _renderer = GetComponent<SprintRenderer>();
+        _currentAddedColor = _clearColor;
+
+    }
+
+    private void FixedUpdate(){
+        if (_isClear) {
+
+        _currentAddedColor = Color.Lerp(_currentAddedColor, _clearColor, Time.deltaTime)
+        }
+        _renderer.color = _currentAddedColor;
+    }
+
+    public void OnClick(){
         Debug.Log("Click")
-
+    }
+    public void OnEnter();{
+        _currentAddedColor = AddColorWithEnter;
+        _isClear = false;
     }
 
-    public void OnClick()
-    {
-        Debug.Log("Enter")
-    }
 
-    public void OneExit()
-    {
-        Debug.Log("Exit")
+    public void OneExit(){
+        _isClear = true;
     }
 }
